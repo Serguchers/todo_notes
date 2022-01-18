@@ -8,3 +8,6 @@ from django.db import models
 class BaseUser(AbstractUser):
     uuid = models.UUIDField(primary_key=True, default=uuid4())
     email = models.EmailField(unique=True, blank=False)
+
+    def __str__(self) -> str:
+        return self.username
