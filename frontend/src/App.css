@@ -38,6 +38,7 @@
 }
 
 table {
+  margin-top: 3%;
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 14px;
   border-collapse: collapse;
@@ -59,3 +60,18 @@ table {
   th:first-child, td:first-child {
   text-align: left;
   }
+
+.menu {
+  margin: auto;
+  display: flex;
+  background-color: grey;
+}
+
+.menu a {
+  flex-grow: 1;
+  text-align: center;
+}
+
+body {
+  margin: 0 10% 0 10%;
+}
