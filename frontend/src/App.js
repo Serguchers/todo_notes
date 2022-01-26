@@ -4,9 +4,9 @@ import './App.css';
 import UserList from './components/Users.js';
 import MenuItem from './components/Menu';
 import FooterItem from './components/Footer';
-import ProjectList from './components/Projects'
+import {ProjectList, ProjectDetail} from './components/Projects'
 import ToDoList from './components/ToDos'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import axios from 'axios';
 
 
@@ -57,9 +57,14 @@ class App extends React.Component {
       <div>
         <MenuItem/>
         <BrowserRouter>
-          <Route exact path='/' component={() =><UserList users={this.state.users}/> }/>
-          <Route exact path='/projects' component={() =><ProjectList projects={this.state.projects}/>}/>
-          <Route exact path='/todos' component={() =><ToDoList todos={this.state.todos}/>}/>
+          <Switch>
+            <Route exact path='/' component={() =><UserList users={this.state.users}/> }/>
+            <Route exact path='/projects' component={() =><ProjectList projects={this.state.projects}/>}/>
+            <Route exact path='/todos' component={() =><ToDoList todos={this.state.todos}/>}/>
+            <Route exact path="/projects/:id">
+              <ProjectDetail projects={this.state.projects}/>
+            </Route>
+          </Switch>
         </BrowserRouter>
         <FooterItem/>
       </div>
