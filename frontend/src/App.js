@@ -6,7 +6,7 @@ import MenuItem from './components/Menu';
 import FooterItem from './components/Footer';
 import {ProjectList, ProjectDetail} from './components/Projects'
 import ToDoList from './components/ToDos'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
 import LoginForm from './components/Auth';
 import axios from 'axios';
 import Cookies from 'universal-cookie'
@@ -105,7 +105,12 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <MenuItem/>
+        <div class='menu'>
+                <a href="http://localhost:3000/">Users</a>
+                <a href="http://localhost:3000/projects">Projects</a>
+                <a href="http://localhost:3000/todos">Notes</a>
+                {this.is_authenticated() ? <button onClick={()=>this.logout()}>Logout</button> : <a href="http://localhost:3000/login">Login</a>}
+        </div>
         <BrowserRouter>
           <Switch>
             <Route exact path='/login' component={() => <LoginForm get_token={(username, password) => this.get_token(username, password)} />} />
